@@ -1,0 +1,123 @@
+<!--ng g d Appnumberonly, appbanglanumber  bangla number input directive host listener diye;;;; pipe- date time............-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a routerLink="/" routerLinkActive="active" class="nav-link" aria-current="page">Home</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/add" routerLinkActive="active" class="nav-link">Add User</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    
+    <!--Main Content-->
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Add Employee</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <!--name-->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input id="name"  formControlName="name" type="text" name="name" class="form-control" placeholder="Name" required>
+            </div>
+          </div>
+
+          <!--designation-->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="designation" class="form-label">Designation</label>
+              <input id="designation"  formControlName="designation" type="text" name="designation" class="form-control" placeholder="Designation" required>
+            </div>
+          </div>
+
+          <!--Email-->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input id="email" type="email"  formControlName="email" name="email" class="form-control" placeholder="email" required> 
+              <div *ngIf="email.touched && email.invalid" class="show-error">
+                <div *ngIf="email.errors?.['required'] && email.dirty">
+                  Please enter email id
+                </div> 
+                <div *ngIf="email.errors?.['email'] && email.dirty">
+                  Please enter a valid email id
+                </div> 
+              </div>
+            </div>
+          </div>
+          
+          <!--PNo-->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="mobileno" class="form-label">Phone Number</label>
+              <input id="mobileno" type="text" name="mobileno" formControlName="mobileno" (keypress)="OnlyNumbers($event)" class="form-control" placeholder="Phone Number" required> <!--(blur)="PasteOnlyNumber_Phone()" -->
+              <div *ngIf="mobileno.touched && mobileno.invalid" class="show-error">
+                <!-- <div *ngIf="mobileno.errors?.['required'] && mobileno.dirty">
+                  Please enter a valid mobile number
+                </div>  -->
+                <div *ngIf="mobileno.errors?.['maxlength'] && mobileno.dirty else elseBlock">
+                  Mobile number has to be 11 digits
+                </div>
+                <ng-template #elseBlock>
+                  <div>Please enter a valid mobile number</div> 
+                </ng-template>
+                <!-- <div *ngIf="mobileno.errors?.['pattern'] && mobileno.dirty">
+                  Please enter a valid mobile number
+                </div>  -->
+              </div>
+            </div>
+          </div>
+         
+          <!--NID-->
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="nid" class="form-label">NID Number</label>
+              <input id="nid" type="text" name="nid"  formControlName="nid" (keypress)="OnlyNumbers($event)" class="form-control" placeholder="NID Number" required>  <!--(blur)="PasteOnlyNumber_Nid()" -->
+              <div *ngIf="nid.touched && nid.invalid" class="show-error">
+                <div *ngIf="nid.errors?.['required'] && nid.dirty">
+                  Please enter nid
+                </div> 
+                <div *ngIf="nid.errors?.['pattern'] && nid.dirty">
+                  Please enter a valid nid
+                </div> 
+              </div>
+            </div>
+          </div>
+         
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <div *ngIf="form.dirty && !form.valid">
+                All fields must be filled
+              </div>
+              <input [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">
+            </div>
+          </div>
+
+          <div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
