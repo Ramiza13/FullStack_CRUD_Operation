@@ -41,8 +41,8 @@ export class UpdateuserComponent implements OnInit {
       name: ['', Validators.required],
       designation: ['', Validators.required],
       email: ['', Validators.required],
-      mobileno: ['', Validators.required],
-      nid: ['']
+      mobileno: ['', [Validators.required, Validators.pattern("^((\\+88-?)|0)?[0-9]{10}$"), Validators.maxLength(11), Validators.minLength(10)]],
+      nid: ['', [Validators.required, Validators.pattern(/^(?:\01)?(?:\d{10}|\d{13}|\d{17})$/)]]
     })
   }
 
@@ -53,6 +53,21 @@ export class UpdateuserComponent implements OnInit {
   //   mobileno: new FormControl('', [Validators.required]),
   //   nid: new FormControl('', [Validators.required])
   // })
+
+  get mobileno() {
+    return this.form.controls.mobileno;
+    // return this.form.controls;
+  }
+
+  get email() {
+    // return this.form.controls;
+    return this.form.controls.email;
+  }
+
+  get nid() {
+    // return this.form.controls;
+    return this.form.controls.nid;
+  }
 
   submit(){
     this.data = this.form.value

@@ -70,7 +70,7 @@
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="mobileno" class="form-label">Phone Number</label>
-              <input id="mobileno" type="text" name="mobileno" formControlName="mobileno" (keypress)="OnlyNumbers($event)" class="form-control" placeholder="Phone Number" required> <!--(blur)="PasteOnlyNumber_Phone()" -->
+              <input id="mobileno" type="text" name="mobileno" formControlName="mobileno" class="form-control" placeholder="Phone Number" appOnlyNumberInput required> <!--(keypress)="OnlyNumbers($event)"   !--(blur)="PasteOnlyNumber_Phone()" -->
               <div *ngIf="mobileno.touched && mobileno.invalid" class="show-error">
                 <!-- <div *ngIf="mobileno.errors?.['required'] && mobileno.dirty">
                   Please enter a valid mobile number
@@ -92,7 +92,7 @@
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="nid" class="form-label">NID Number</label>
-              <input id="nid" type="text" name="nid"  formControlName="nid" (keypress)="OnlyNumbers($event)" class="form-control" placeholder="NID Number" required>  <!--(blur)="PasteOnlyNumber_Nid()" -->
+              <input id="nid" type="text" name="nid"  formControlName="nid" class="form-control" placeholder="NID Number" appOnlyNumberInput required>  <!--(blur)="PasteOnlyNumber_Nid()" -->
               <div *ngIf="nid.touched && nid.invalid" class="show-error">
                 <div *ngIf="nid.errors?.['required'] && nid.dirty">
                   Please enter nid
