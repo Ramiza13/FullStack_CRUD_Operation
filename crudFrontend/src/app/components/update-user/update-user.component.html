@@ -61,7 +61,15 @@
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="mobileno" class="form-label">Phone Number</label>
-              <input id="mobileno" type="text" name="mobileno"  formControlName="mobileno" class="form-control" placeholder="Phone Number" required>
+              <input id="mobileno" type="text" name="mobileno"  formControlName="mobileno" class="form-control" placeholder="Phone Number"  appOnlyNumberInput required>
+              <div *ngIf="mobileno.touched && mobileno.invalid" class="show-error">
+                <div *ngIf="mobileno.errors?.['maxlength'] && mobileno.dirty else elseBlock">
+                  Mobile number has to be 11 digits
+                </div>
+                <ng-template #elseBlock>
+                  <div>Please enter a valid mobile number</div> 
+                </ng-template>
+              </div>
             </div>
           </div> 
          
@@ -69,7 +77,15 @@
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="nid" class="form-label">NID Number</label>
-              <input id="nid" type="text" name="nid" formControlName="nid" class="form-control" placeholder="NID Number" required>
+              <input id="nid" type="text" name="nid" formControlName="nid" class="form-control" placeholder="NID Number"  appOnlyNumberInput required>
+              <div *ngIf="nid.touched && nid.invalid" class="show-error">
+                <div *ngIf="nid.errors?.['required'] && nid.dirty">
+                  Please enter nid
+                </div> 
+                <div *ngIf="nid.errors?.['pattern'] && nid.dirty">
+                  Please enter a valid nid
+                </div> 
+              </div>
             </div>
           </div>
          
