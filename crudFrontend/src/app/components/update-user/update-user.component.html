@@ -42,10 +42,22 @@
           </div>
 
           <!--designation-->
-          <div class="row">
+          <!--<div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="designation" class="form-label">Designation</label>
               <input id="designation"  formControlName="designation" type="text" name="designation" class="form-control" placeholder="Designation" required>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="designation" class="form-label">Designation</label>
+              <select id="designation" placeholder="Designation" formControlName="designation" name="designation" class="form-control" required>
+                <option value="Not Selected">--Select Your Designation--</option>
+                <option value="Programmer">Programmer</option>
+                <option value="Trainee Programmer">Trainee Programmer</option>
+                <option value="Intern">Intern</option>
+              </select>
             </div>
           </div>
 
